@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 0 20px 10px 10px;
+    border: solid 1px black;
+    max-width: fit-content;
+}
+
+.text-label {
+    display: inline-block;
+    text-align: right;
+    width: 120px;
+}
+
+fieldset {
+    text-align: center;
+}
+
+h2 {
+    margin-top: 40px;
+}

@@ -9,6 +9,45 @@
     <script type="text/javascript" src="script.js" defer></script>
 </head>
 <body>
+    <h1>Library app</h1>
+    <p>Add your own book and check out the library to see what others have added.</p>
+
+    <button id="addButton">Add a new book</button>
+
+    <form id="bookForm" action="" method="post" style="display: none;">
+        <h3>Add a book to the library</h3>
+
+        <div>
+            <label class="text-label">Book title:</label>
+            <input id="title" name="title" type="text">
+        </div>
+
+        <div>
+            <label class="text-label">Author:</label>
+            <input id="author" name="author" type="text">
+        </div>
+
+        <div>
+            <label class="text-label">Number of pages:</label>
+            <input id="pages" name="pages" type="number">
+        </div>
+
+        <fieldset>
+            <legend>Have you read the book?:</legend>
+            <div>
+              <input type="radio" id="readYes" name="read" value="yes" />
+              <label for="readYes">Yes</label>
+        
+              <input type="radio" id="readNo" name="read" value="no" />
+              <label for="readNo">No</label>
+            </div>
+          </fieldset>
+
+        <button type="submit">submit</button>
+    </form>
+
+    <h2>Our book library:</h2>
+    <ul id="list"></ul>
     
 </body>
 </html>
