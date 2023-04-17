@@ -5,14 +5,9 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
   this.info = function () {
-    return `${title} by ${author}, ${pages} pages. Read? ${read}.`;
+    return `${title} by ${author}, No' pages: ${pages}. Read?:`;
   };
 }
-
-// Seed the library with a few examples
-// const book1 = new Book('The three body problem', 'Liu Cixin', 302, 'yes');
-// const book2 = new Book('Dune', 'Frank Herbert', 896, 'yes');
-// const book3 = new Book('The fall of hyperion', 'Dan Simmons', 517, 'no');
 
 // Initialised variables.
 const myLibrary = [];
@@ -22,7 +17,7 @@ const form = document.getElementById('bookForm');
 function DisplayBooks(book, index) {
   const ul = document.getElementsByTagName('ul')[0];
   const li = document.createElement('li');
-  ul.appendChild(li).innerHTML = `<li data-id="${index}"> ${book.info()} <button onclick="deleteBook(this)">Delete</button>`;
+  ul.appendChild(li).innerHTML = `<li data-id="${index}"> ${book.info()} <button onclick="readToggle(this)">${book.read}</button> <button onclick="deleteBook(this)">Delete</button>`;
 }
 
 // Add book form submittion handler
@@ -61,4 +56,18 @@ function deleteBook(element) {
   const index = element.parentNode.getAttribute('data-id');
   myLibrary.splice(index, 1);
   element.parentNode.parentNode.remove();
+}
+
+// Toggle read status of a book
+function readToggle(element) {
+  const index = element.parentNode.getAttribute('data-id');
+  // change read status on book
+  const book = myLibrary[index];
+  if (book.read === 'yes') {
+    book.read = 'no';
+  } else {
+    book.read = 'yes';
+  }
+  // Change button text to match read.
+  element.innerHTML = book.read;
 }
