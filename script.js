@@ -1,12 +1,22 @@
-// The constructor
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.info = function () {
-    return `${title} by ${author}, No' pages: ${pages}. Read?:`;
-  };
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  get info() {
+    return `${this.title} by ${this.author}, No' pages: ${this.pages}. Read?:`;
+  }
+
+  toggleRead() {
+    if (this.read === 'yes') {
+      this.read = 'no';
+    } else {
+      this.read = 'yes';
+    }
+  }
 }
 
 // Initialised variables.
@@ -17,7 +27,7 @@ const form = document.getElementById('bookForm');
 function DisplayBooks(book, index) {
   const ul = document.getElementsByTagName('ul')[0];
   const li = document.createElement('li');
-  ul.appendChild(li).innerHTML = `<li data-id="${index}"> ${book.info()} <button onclick="readToggle(this)">${book.read}</button> <button onclick="deleteBook(this)">Delete</button>`;
+  ul.appendChild(li).innerHTML = `<li data-id="${index}"> ${book.info} <button onclick="readToggle(this)">${book.read}</button> <button onclick="deleteBook(this)">Delete</button>`;
 }
 
 // Add book form submittion handler
@@ -63,11 +73,7 @@ function readToggle(element) {
   const index = element.parentNode.getAttribute('data-id');
   // change read status on book
   const book = myLibrary[index];
-  if (book.read === 'yes') {
-    book.read = 'no';
-  } else {
-    book.read = 'yes';
-  }
+  book.toggleRead();
   // Change button text to match read.
   element.innerHTML = book.read;
 }
